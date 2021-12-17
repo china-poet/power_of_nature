@@ -17,5 +17,6 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'comma-dangle': 'off',
+    'no-unused-vars': 'warn',
   },
 }

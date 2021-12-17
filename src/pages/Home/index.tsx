@@ -1,17 +1,68 @@
 import './index.less'
-import { CSSTransition } from 'react-transition-group'
+import PicCard from '../../components/PicCard'
+import { useState } from 'react'
+
+type BarItem = {
+  title: string
+  children?: BarItem[]
+}
 
 const Home = () => {
+  const [activeItem, setActiveItem] = useState<BarItem>()
+  const barItem: BarItem[] = [
+    {
+      title: 'ABOUT',
+      children: [{ title: 'child1' }, { title: 'child1' }, { title: 'child1' }],
+    },
+    {
+      title: 'WORKS',
+      children: [
+        { title: 'child1' },
+        { title: 'child1' },
+        { title: 'child1' },
+        { title: 'child1' },
+        { title: 'child1' },
+        { title: 'child1' },
+      ],
+    },
+    { title: 'CONTACT' },
+  ]
+
   return (
     <div className="home-page">
       <div className="topbar">
-        <div>NATURE OF POWER</div>
-        <div>
-          <span>ABOUT</span>
-          <span>WORKS</span>
-          <span>CONTACT</span>
+        <div className="logo">NATURE OF POWER</div>
+        <div className="bar">
+          <div className="bar-content">
+            {barItem.map((item) => {
+              return (
+                <span
+                  className={activeItem?.title === item.title ? 'active' : ''}
+                  key={item.title}
+                  onMouseOver={() => setActiveItem(item)}
+                  onMouseOut={() => setActiveItem(undefined)}>
+                  {item.title}
+                </span>
+              )
+            })}
+            {/* <span className="active">ABOUT</span>
+            <span>WORKS</span>
+            <span>CONTACT</span> */}
+          </div>
+          <div className={`bar-draw ${activeItem ? 'active-draw' : ''}`}>
+            {activeItem?.children?.map((item) => {
+              return <span key={item.title}>{item.title}</span>
+            })}
+            {/* <span>child1</span>
+            <span>child2</span>
+            <span>child3</span>
+            <span>child1</span>
+            <span>child2</span>
+            <span>child3</span> */}
+          </div>
         </div>
       </div>
+
       <div className="page-content">
         <div className="main">
           <div className="menu-box">
@@ -25,15 +76,21 @@ const Home = () => {
             </div>
           </div>
           <div className="pic-view">
-            <div className="product-pic">
-              <div className="detail">
-                <div className="title">Something good thing,right?</div>
-                <div className="desc">Web/App</div>
-              </div>
-            </div>
-            <div className="product-pic"></div>
-            <div className="product-pic"></div>
-            <div className="product-pic"></div>
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
+            <PicCard className="pic-box" />
           </div>
         </div>
       </div>

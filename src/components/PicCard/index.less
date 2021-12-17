@@ -1,0 +1,39 @@
+.product-pic {
+  display: inline-block;
+  width: calc(100% / 3 - 20px);
+  height: 200px;
+  margin: 4px 10px;
+  background-color: gray;
+  position: relative;
+  overflow: hidden;
+  .detail {
+    transition: all 0.6s ease;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(white, 0.8);
+    padding: 22px 10px;
+    transition: all 0.6s ease;
+    transform: translateX(-100%);
+    opacity: 0;
+    .title {
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    .desc {
+      font-size: 12px;
+    }
+  }
+  //   transition
+
+  .detail-slide {
+    &-enter-active,
+    &-enter-done {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    &-exit-active {
+      transform: translateX(100%);
+    }
+  }
+}
